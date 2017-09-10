@@ -22,13 +22,13 @@ module.exports = (robot) ->
       res.send("Go, Pack, Go!")
 
   robot.hear /turn on lights/i, (res) ->
-    robot.http("#{homeAssistantURL}/services/lights/turn_on")
+    robot.http("#{homeAssistantURL}/services/light/turn_on")
     .header('x-ha-access', apiPassword)
     .post() (err, httpres, body) ->
       res.send("Lights are on")
 
   robot.hear /turn off lights/i, (res) ->
-    robot.http("#{homeAssistantURL}/services/lights/turn_off")
+    robot.http("#{homeAssistantURL}/services/light/turn_off")
     .header('x-ha-access', apiPassword)
     .post() (err, httpres, body) ->
       res.send("Lights are off")
