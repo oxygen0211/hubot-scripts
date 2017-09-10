@@ -1,6 +1,6 @@
 module.exports = (robot) ->
   robot.router.post '/automation/alert', (request, response) ->
-    message = request.body.message
-    robot.messageRoom 'automation', "#{message}"
+    data   = if request.body.payload? then JSON.parse request.body.payload else request.body
+    robot.messageRoom 'automation', "#{data.message}"
 
     response.send 'OK'
